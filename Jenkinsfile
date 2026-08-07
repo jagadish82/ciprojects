@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Git-checkout'){
             steps{
-                git branch: 'dev' , url: 'https://github.com/jagadish82/ciprojects.git'
+                git branch: 'main' , url: 'https://github.com/jagadish82/ciprojects.git'
             }
         }
         stage('Code Compile'){
