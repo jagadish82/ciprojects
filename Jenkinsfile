@@ -34,16 +34,15 @@ pipeline{
                 '''
             }
         }
-        stage('Login to Docker Hub') {
-                    steps {
-                        script {
-                            withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                                sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-                            }
-                        }
-                    }
+        stage('docker login to dockerhub'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
+                sh '''echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'''
+            }
+
+            }
         }
-         stage('Pushing image to repository'){
+        stage('Pushing image to repository'){
             steps{
                 sh 'docker push jagadish69/cjproject'
             }
