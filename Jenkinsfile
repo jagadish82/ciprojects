@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Git-checkout'){
             steps{
-                git branch: 'dev' , url: 'https://github.com/manjukolkar/web-application.git'
+                git branch: 'dev' , url: 'https://github.com/jagadish82/ciprojects.git'
             }
         }
         stage('Code Compile'){
@@ -24,7 +24,7 @@ pipeline{
         }
         stage('Build and tag'){
             steps{
-                sh 'docker build -t manjukolkar007/project-1 .'
+                sh 'docker build -t  .'
             }
         }
         stage('Containerisation'){
